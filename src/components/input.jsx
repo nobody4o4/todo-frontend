@@ -2,8 +2,9 @@ export default function Input({
   label = "Label",
   type = "text",
   placeholder = "Enter a value",
-  onChange = () => {},
   value = "",
+  onChange = () => {}
+  
 }) {
   return (
     <fieldset className="flex flex-col w-full mb-4">
