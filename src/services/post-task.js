@@ -9,7 +9,7 @@ export const postTask = async ({ taskName, taskDescription, taskStatus }) => {
         taskName,
         taskDescription,
         taskStatus,
-      }),
+      })
     });
     return await res.json();
   } catch (err) {
