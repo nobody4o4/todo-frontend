@@ -4,11 +4,11 @@ import Button from "./components/button";
 import { getTasks } from "./services/get-tasks";
 import TaskCard from "./components/task-card";
 import { postTask } from "./services/post-task";
+import TasksSection from "./components/tasks-section";
 
 function App() {
 
   const [tasks, setTasks] = useState([]);
-
 
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
@@ -38,8 +38,9 @@ function App() {
     });
   }, []);
 
-
+  console.log( tasks)
   return (
+    
     <div className="p-8">
       <h1>Todo Application</h1>
 
@@ -62,27 +63,7 @@ function App() {
       </form>
 
       <hr className="my-8" />
-      <div className="gap-6 grid grid-cols-3">
-        {tasks.map((task) => (
-          <TaskCard
-            key={task.id}
-            id={task.id}
-            name={task.taskName}
-            description={task.taskDescription}
-            status={task.taskStatus}
-
-            //for passing the tasks array to the child component 
-            //used to update the tasks array in the parent component
-            // like delete
-            tasks={tasks}
-            setTasks={setTasks}
-
-            updateTask={UpdateTask}
-            onUpdate={onUpdate} // Pass the onUpdate function
-          />
-        ))}
-
-      </div>
+      <TasksSection tasks={tasks} setTasks={setTasks} />
     </div>
   );
 }
