@@ -7,9 +7,8 @@ export const getTasks = async (signal) => {
       signal,
     });
 
-    //return await res.json(); for data is directly returned as array of json objects
-
-
+    // for data is directly returned as array of json objects
+    //return await res.json();
 
     //this is done as data details are returned as object => pagination
     const data = await res.json();

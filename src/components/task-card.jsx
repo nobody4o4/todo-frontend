@@ -5,23 +5,27 @@ import { UpdateTask } from "../services/update-task";
 import Input from "./input";
 
 export default function TaskCard({
+
   id = 0,
   name = "",
   description = "",
   status = "",
+
+  //tasks is an empty array by default
   tasks = [],
   //setTasks is an empty function by default
   //it is an function that takes an array of tasks as an argument
-  setTasks = () => { },
-}) {
-  const [isDeleting, setIsDeleting] = useState(false);
+  setTasks = () => { }
 
+}) {
+  
+  //individual fields for the update form 
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
-  const [taskStatus, setTaskStatus] = useState("")
 
   const [isEditing, setIsEditing] = useState(false)
   const [isUpdating, setIsUpdating] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   //delete task of a particular task id
   const handleDelete = async (id) => {
@@ -47,7 +51,6 @@ export default function TaskCard({
       });
 
     setIsUpdating(false);
-
   };
 
   return (
@@ -56,7 +59,10 @@ export default function TaskCard({
       <div className="flex flex-col">
         <h1 className="font-semibold text-lg">
           Name:
-          {!isEditing ? (<span className="text-base font-normal"> {name} </span>) : (<Input
+          {!isEditing ? 
+          (<span className="text-base font-normal"> {name} </span>)
+           :
+            (<Input
             type="text"
             placeholder="Eg: Buy Milk"
             value={taskName}
@@ -68,7 +74,10 @@ export default function TaskCard({
         <p className="font-semibold text-lg">
           Description:{" "}
           <span className="text-base font-normal">
-            {!isEditing ? (<span className="text-base font-normal"> {description} </span>) : (<Input
+            {!isEditing ? 
+            (<span className="text-base font-normal"> {description} </span>)
+             : 
+             (<Input
               type="text"
               placeholder="Eg: Buy Milk"
               value={taskDescription}
@@ -95,7 +104,7 @@ export default function TaskCard({
             className="text-base h-fit w-fit absolute bottom-4 right-4 rounded-md"
             onClick={() => { setIsEditing(true) }}
           />
-           :
+           : 
           (<Button
             text="Save"
             type="button"

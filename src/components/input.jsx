@@ -14,9 +14,10 @@ export default function Input({
         className="border border-gray-300 rounded p-2"
         type={type}
         placeholder={placeholder}
+        value={value}
         onChange={(e) => onChange(e.target.value)}
 
-        value={value}
+        
       />
     </fieldset>
   );

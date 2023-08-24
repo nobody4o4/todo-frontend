@@ -8,14 +8,16 @@ import TasksSection from "./components/tasks-section";
 
 function App() {
 
+  //task to be populated
   const [tasks, setTasks] = useState([]);
 
+  //individual fields for the form
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [status, setStatus] = useState("pending");
 
   const [isAdding, setIsAdding] = useState(false);
-  
+
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -38,9 +40,9 @@ function App() {
     });
   }, []);
 
-  console.log( tasks)
+  console.log(tasks)
   return (
-    
+
     <div className="p-8">
       <h1>Todo Application</h1>
 
@@ -59,11 +61,18 @@ function App() {
           value={taskDescription}
           onChange={setTaskDescription}
         />
-        <Button text="Add Task" loading={isAdding} />
+        <Button
+          text="Add Task"
+          loading={isAdding} />
       </form>
 
       <hr className="my-8" />
-      <TasksSection tasks={tasks} setTasks={setTasks} />
+
+      <TasksSection
+        tasks={tasks}
+        setTasks={setTasks}
+      />
+
     </div>
   );
 }
